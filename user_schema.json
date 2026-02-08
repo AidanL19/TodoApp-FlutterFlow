@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/user_schema.json",
+  "title": "User",
+  "description": "Firestore user document for the ToDo app",
+  "type": "object",
+  "additionalProperties": false,
+
+  "required": [
+    "uid",
+    "display_name",
+    "email",
+    "created_time"
+  ],
+
+  "properties": {
+    "uid": {
+      "type": "string",
+      "description": "Firebase Authentication UID that uniquely identifies the user"
+    },
+
+    "display_name": {
+      "type": "string",
+      "description": "User's full display name"
+    },
+
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "User email address"
+    },
+
+    "birthday": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Birthday stored as a Firestore Timestamp serialized to ISO 8601 string"
+    },
+
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Account creation timestamp from Firestore"
+    },
+
+    "instagram": {
+      "type": "string",
+      "description": "Instagram username or handle (without @)"
+    }
+  }
+}
