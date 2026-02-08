@@ -11,14 +11,15 @@ class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]), originalFilename: '');
   String uploadedFileUrl_profilePhoto = '';
 
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
-  TextEditingController? textController1;
-  String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
+  // State field(s) for TextField-Name widget.
+  FocusNode? textFieldNameFocusNode;
+  TextEditingController? textFieldNameTextController;
+  String? Function(BuildContext, String?)? textFieldNameTextControllerValidator;
+  // State field(s) for TextField-Insta widget.
+  FocusNode? textFieldInstaFocusNode;
+  TextEditingController? textFieldInstaTextController;
+  String? Function(BuildContext, String?)?
+      textFieldInstaTextControllerValidator;
   DateTime? datePicked;
 
   @override
@@ -26,10 +27,10 @@ class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
 
   @override
   void dispose() {
-    textFieldFocusNode1?.dispose();
-    textController1?.dispose();
+    textFieldNameFocusNode?.dispose();
+    textFieldNameTextController?.dispose();
 
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
+    textFieldInstaFocusNode?.dispose();
+    textFieldInstaTextController?.dispose();
   }
 }

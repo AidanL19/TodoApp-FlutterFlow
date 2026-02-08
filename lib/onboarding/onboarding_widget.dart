@@ -33,11 +33,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
     super.initState();
     _model = createModel(context, () => OnboardingModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.textFieldNameTextController ??= TextEditingController();
+    _model.textFieldNameFocusNode ??= FocusNode();
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldInstaTextController ??= TextEditingController();
+    _model.textFieldInstaFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -222,10 +222,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                           Container(
                             width: double.infinity,
                             child: TextFormField(
-                              controller: _model.textController1,
-                              focusNode: _model.textFieldFocusNode1,
+                              controller: _model.textFieldNameTextController,
+                              focusNode: _model.textFieldNameFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textController1',
+                                '_model.textFieldNameTextController',
                                 Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
@@ -308,19 +308,20 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 26.0, 24.0, 26.0),
-                                suffixIcon:
-                                    _model.textController1!.text.isNotEmpty
-                                        ? InkWell(
-                                            onTap: () async {
-                                              _model.textController1?.clear();
-                                              safeSetState(() {});
-                                            },
-                                            child: Icon(
-                                              Icons.clear,
-                                              size: 24.0,
-                                            ),
-                                          )
-                                        : null,
+                                suffixIcon: _model.textFieldNameTextController!
+                                        .text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          _model.textFieldNameTextController
+                                              ?.clear();
+                                          safeSetState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.clear,
+                                          size: 24.0,
+                                        ),
+                                      )
+                                    : null,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -345,17 +346,18 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
                               enableInteractiveSelection: true,
-                              validator: _model.textController1Validator
+                              validator: _model
+                                  .textFieldNameTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
                           Container(
                             width: double.infinity,
                             child: TextFormField(
-                              controller: _model.textController2,
-                              focusNode: _model.textFieldFocusNode2,
+                              controller: _model.textFieldInstaTextController,
+                              focusNode: _model.textFieldInstaFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
-                                '_model.textController2',
+                                '_model.textFieldInstaTextController',
                                 Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
@@ -438,19 +440,20 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     .secondaryBackground,
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
                                     24.0, 26.0, 24.0, 26.0),
-                                suffixIcon:
-                                    _model.textController2!.text.isNotEmpty
-                                        ? InkWell(
-                                            onTap: () async {
-                                              _model.textController2?.clear();
-                                              safeSetState(() {});
-                                            },
-                                            child: Icon(
-                                              Icons.clear,
-                                              size: 24.0,
-                                            ),
-                                          )
-                                        : null,
+                                suffixIcon: _model.textFieldInstaTextController!
+                                        .text.isNotEmpty
+                                    ? InkWell(
+                                        onTap: () async {
+                                          _model.textFieldInstaTextController
+                                              ?.clear();
+                                          safeSetState(() {});
+                                        },
+                                        child: Icon(
+                                          Icons.clear,
+                                          size: 24.0,
+                                        ),
+                                      )
+                                    : null,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -474,7 +477,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                               cursorColor:
                                   FlutterFlowTheme.of(context).primaryText,
                               enableInteractiveSelection: true,
-                              validator: _model.textController2Validator
+                              validator: _model
+                                  .textFieldInstaTextControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -591,9 +595,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                       onPressed: () async {
                         await currentUserReference!
                             .update(createUsersRecordData(
-                          displayName: _model.textController1.text,
+                          displayName: _model.textFieldNameTextController.text,
                           birthday: _model.datePicked,
-                          instagram: _model.textController2.text,
+                          instagram: _model.textFieldInstaTextController.text,
                         ));
 
                         context.goNamed(TasksWidget.routeName);
