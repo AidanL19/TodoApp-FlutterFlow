@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "146063848645",
+    "project_id": "to-do-wpwn9n",
+    "storage_bucket": "to-do-wpwn9n.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146063848645:android:f416378fb2d262e4df2cac",
+        "android_client_info": {
+          "package_name": "com.mycompany.todo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTyV16XFaxyji9KZ3NDaXYkbmRotWsdP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
